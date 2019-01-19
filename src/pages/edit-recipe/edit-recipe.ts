@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, AlertController, ToastController } from 'ionic-angular';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 
 /**
@@ -19,7 +19,8 @@ export class EditRecipePage implements OnInit {
 
   constructor(public navCtrl: NavController, private navParams: NavParams,
               private actionSheetController: ActionSheetController,
-              private alertCtrl: AlertController) {
+              private alertCtrl: AlertController,
+              private toastCtrl: ToastController) {
   }
 
   ngOnInit(){
@@ -56,6 +57,13 @@ export class EditRecipePage implements OnInit {
               for(let i = len - 1; i >= 0; i--){
                 fArray.removeAt(i);
               }
+               // display a toast message
+               const toast = this.toastCtrl.create({
+                message : 'All ingredients were deleted!',
+                duration : 1000,
+                position : 'bottom'
+              })
+              toast.present();
             }
           }
         },
@@ -89,11 +97,24 @@ export class EditRecipePage implements OnInit {
           handler: data => {
             if(data.name.trim() == '' || data.name == null){
               // display a toast message
+              const toast = this.toastCtrl.create({
+                message : 'Please enter a valid value',
+                duration : 1500,
+                position : 'bottom'
+              })
+              toast.present();
               return;
             }
             // cast to FormArray
             (<FormArray>this.recipeForm.get('ingredients'))
-              .push(new FormControl(data.name, Validators.required))
+              .push(new FormControl(data.name, Validators.required));
+             // display a toast message
+             const toast = this.toastCtrl.create({
+              message : 'Ingredient added!',
+              duration : 1000,
+              position : 'bottom'
+            })
+            toast.present();
           }
         }
 
