@@ -1,0 +1,14 @@
+#!/bin/bash
+
+export JAVA_HOME='/usr/lib/jvm/java-8-oracle'
+
+echo java home set to
+echo $JAVA_HOME
+
+echo building for android platform..
+ionic cordova build android
+echo build done!
+
+echo copying generated apk to dropbox folder
+cp /home/ciro/Progetti/ionic/recipe-book/recipe-book/platforms/android/app/build/outputs/apk/debug/app-debug.apk /home/ciro/Dropbox/Dropbox/Progetti/ionic/recipes-book
+echo copy finished
