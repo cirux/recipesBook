@@ -3,6 +3,7 @@
 
   <ion-navbar>
     <ion-buttons end>
+      <!-- button for adding a new recipe-->
       <button ion-button icon-only (click)="onNewRecipe()">
         <ion-icon name="add"></ion-icon>
       </button>
@@ -14,5 +15,16 @@
 
 
 <ion-content padding>
+
+  <!-- list of existing recipes-->
+  <ion-list>
+    <button 
+    ion-item
+    *ngFor="let recipe of recipes; let i = index"
+    (click)="onLoadRecipe()">
+     <h2>{{recipe.title}}</h2>
+     <ion-note>{{recipe.difficulty}}</ion-note>
+  </button>
+  </ion-list>
 
 </ion-content>
