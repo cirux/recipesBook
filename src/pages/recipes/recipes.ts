@@ -33,7 +33,6 @@ export class RecipesPage {
   onLoadRecipe(recipe: Recipe, index: number){
     // go to recipe detail page
     this.navCtrl.push(RecipePage, {recipe: recipe, index: index});
-
   }
 
 }
