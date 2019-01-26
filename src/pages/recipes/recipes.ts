@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EditRecipePage } from '../edit-recipe/edit-recipe';
 import { Recipe } from '../../model/recipe';
 import { RecipesService } from '../../services/recipes';
+import { RecipePage } from '../recipe/recipe';
 
 /**
  * Allows addition of a new recipe
@@ -29,7 +30,9 @@ export class RecipesPage {
 
   }
 
-  onLoadRecipe(){
+  onLoadRecipe(recipe: Recipe, index: number){
+    // go to recipe detail page
+    this.navCtrl.push(RecipePage, {recipe: recipe, index: index});
 
   }
 
