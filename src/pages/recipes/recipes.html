@@ -2,6 +2,12 @@
 <ion-header>
 
   <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+
     <ion-buttons end>
       <!-- button for adding a new recipe-->
       <button ion-button icon-only (click)="onNewRecipe()">
