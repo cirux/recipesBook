@@ -15,7 +15,22 @@
 
 </ion-header>
 
-
 <ion-content padding>
-
-</ion-content>
+    <!-- this form as a local reference f-->
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <ion-list>
+        <ion-item>
+          <ion-label fixed>Mail</ion-label>
+          <!-- template driven approach -->
+          <ion-input type="email" ngModel name="mail" required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Password</ion-label>
+            <!-- template driven approach -->
+            <ion-input type="password" ngModel name="password" required></ion-input>
+          </ion-item>
+      </ion-list>
+      <button ion-button block type="submit" [disabled]="!f.valid">Signin</button>
+    </form>
+  
+  </ion-content>

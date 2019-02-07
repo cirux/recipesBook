@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NgForm } from '@angular/forms';
 
 /**
- * Generated class for the SigninPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * handles form submit for signin
  */
 
 @IonicPage()
@@ -20,6 +18,10 @@ export class SigninPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SigninPage');
+  }
+
+  onSubmit(form: NgForm){
+    console.log(form.value);
   }
 
 }
