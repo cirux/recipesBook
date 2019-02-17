@@ -22,4 +22,8 @@ export class AuthService{
         // deletes our token
         firebase.auth().signOut();
     }
+
+    getActiveUser(){
+        return firebase.auth().currentUser;
+    }
 }

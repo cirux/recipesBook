@@ -31,6 +31,7 @@ export class SlOptionsPage{
     constructor(private viewCtrl: ViewController){}
 
     onAction(action: string){
+        console.log("onAction " + action);
         this.viewCtrl.dismiss({action: action});
     }
 

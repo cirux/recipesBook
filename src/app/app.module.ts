@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
+//import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http'; 
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -31,6 +33,9 @@ import { SlOptionsPage } from '../pages/shopping-list/sl-options/sl-options';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    // import HttpClientModule after BrowserModule.
+   // HttpClientModule,
     IonicModule.forRoot(MyAppRecipeBook)
   ],
   bootstrap: [IonicApp],

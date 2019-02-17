@@ -4,9 +4,10 @@ import { ShoppingListService } from '../../services/shopping-list';
 import { Ingredient } from '../../model/ingredient';
 import { PopoverController } from 'ionic-angular';
 import { SlOptionsPage } from './sl-options/sl-options';
+import { AuthService } from '../../services/auth';
 
 /**
-
+ * 
  */
 
 @Component({
@@ -17,7 +18,8 @@ export class ShoppingListPage {
   listItems: Ingredient[];
 
   constructor(private slService: ShoppingListService,
-      private popoverCtrl: PopoverController){}
+      private popoverCtrl: PopoverController,
+      private authService: AuthService){}
 
   ionViewWillEnter(){
     this.loadItems();
@@ -39,8 +41,51 @@ export class ShoppingListPage {
   }
 
   onShowOptions(event: MouseEvent){
+    console.log("onShowOptions" + event);
     const popover = this.popoverCtrl.create(SlOptionsPage);
     popover.present({ev: event});
+    popover.onDidDismiss(
+      data => {
+        if(data.action == 'load'){
+          console.log("load action");
+          this.authService.getActiveUser().getIdToken()
+          .then(
+            (token: string) => {
+              this.slService.fetchList(token)
+                .subscribe(
+                  (list) => {
+                    if(list){
+                      this.listItems = list.json();
+                    }else{
+                      this.listItems = [];
+                    }
+                  },
+                  error => {
+                    console.log(error);
+                  }
+                );
+            }
+          );
+
+        } else if (data.action == 'save'){
+          console.log("save action");
+          this.authService.getActiveUser().getIdToken()
+          .then(
+            (token: string) => {
+              this.slService.storeList(token)
+                .subscribe(
+                  () => console.log("Success"),
+                  error => {
+                    console.log(error);
+                  }
+                );
+            }
+          );
+        }else{
+          console.log("unknown action " + data.action);
+        }
+      }
+    )
   }
 
 }
