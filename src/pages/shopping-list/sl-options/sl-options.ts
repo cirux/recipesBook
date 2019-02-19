@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { ViewController } from "ionic-angular";
 
 /**
- * Page for display popover with inline template
+ * component for display popover with inline template
  */
 @Component({
     selector: 'page-sl-options',
