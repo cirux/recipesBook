@@ -1,0 +1,7 @@
+The recipe book app implements the following features:
+- tabs navigation
+- user input
+- forms (template driven and reactive approach)
+- data management (Model, Service)
+- authentication (firebase backend)
+- http get and post operations (firebase backend)
