@@ -26,7 +26,7 @@ import { ViewController } from "ionic-angular";
 
     `
 })
-export class SlOptionsPage{
+export class DatabaseOptionsPage{
 
     constructor(private viewCtrl: ViewController){}
 
